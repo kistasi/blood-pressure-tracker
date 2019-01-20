@@ -1,3 +1,2 @@
-Blood Pressuere Tracker
+Blood Pressure Tracker
 =======================
-

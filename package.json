@@ -1,7 +1,7 @@
 {
   "name": "blood-pressure-tracker",
   "version": "0.0.1",
-  "description": "Blood Pressure Tracker application",
+  "description": "Blood pressure Tracker application",
   "main": "index.js",
   "dependencies": {
     "body-parser": "^1.18.3",
