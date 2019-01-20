@@ -1,0 +1,9 @@
+{{#results}}
+<div style="margin: 1em; background:red;">
+    <p>ID: {{id}}</p>
+    <p>systolic: {{systolic}}</p>
+    <p>diastolic: {{diastolic}}</p>
+    <p>pulse: {{pulse}}</p>
+    <p>date: {{createdAt}}</p>
+</div>
+{{/results}}

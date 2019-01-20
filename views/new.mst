@@ -1,0 +1,6 @@
+<form action="{{action}}" method="POST">
+    <p>systolic: <input type="number" name="systolic" required /></p>
+    <p>diastolic: <input type="number" name="diastolic" required /></p>
+    <p>pulse: <input type="number" name="pulse" required /></p>
+    <p><input type="submit" /></p>
+</form>
