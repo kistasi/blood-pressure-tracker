@@ -4,6 +4,7 @@ const sqlite3 = require('sqlite3');
 const Sequelize = require('sequelize');
 const uuid_v1 = require('uuid/v1');
 const mustacheExpress = require('mustache-express');
+const moment = require('moment');
 
 /* Config */
 const port = 4000;
@@ -11,7 +12,16 @@ const database_file = './results.sqlite';
 
 /* Create database schema */
 const database = new sqlite3.Database(database_file);
-database.run('CREATE TABLE IF NOT EXISTS results(id Integer, systolic Varchar, diastolic Varchar, pulse Varchar, createdAt Datetime, updatedAt Datetime);');
+database.run(
+	'CREATE TABLE IF NOT EXISTS results(\
+		id Integer, \
+		systolic Varchar, \
+		diastolic Varchar, \
+		pulse Varchar, \
+		createdAt Datetime, \
+		updatedAt Datetime\
+	);'
+);
 
 /* Database connection */
 const sequelize = new Sequelize('mainDB', null, null, {
@@ -21,7 +31,7 @@ const sequelize = new Sequelize('mainDB', null, null, {
 sequelize.authenticate();
 
 /* Defining the Result model */
-const Result = sequelize.define('results', {
+const Result = sequelize.define('Result', {
 	id: {
 		type: Sequelize.INTEGER,
 		autoIncrement: true,
@@ -30,7 +40,15 @@ const Result = sequelize.define('results', {
 	systolic: Sequelize.STRING,
 	diastolic: Sequelize.STRING,
 	pulse: Sequelize.STRING,
-});
+	},
+	{
+		getterMethods: {
+			localizedCreatedAt: function () {
+				return moment(this.createdAt).format().substr(0, 10)
+			}
+		}
+	}
+);
 
 /* Initialize express.js */
 const app = express();
@@ -47,8 +65,8 @@ app.set('views', __dirname + '/views');
 
 /* Frontpage */
 app.get('/', (request, response) => {
-	Result.findAll({order: [ ['updatedAt', 'DESC']]}).then(results => {
-		response.render('frontpage', {results: results});
+	Result.findAll({order: [['updatedAt', 'DESC']]}).then(results => {
+		response.render('frontpage', { results })
 	});
 });
 

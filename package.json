@@ -6,6 +6,7 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "moment": "^2.23.0",
     "mustache-express": "^1.2.8",
     "sequelize": "^4.42.0",
     "sqlite3": "^4.0.6",
