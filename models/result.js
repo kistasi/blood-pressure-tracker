@@ -9,9 +9,15 @@ module.exports = (sequelize, DataTypes) => {
         autoIncrement: true,
         primaryKey: true,
       },
-      systolic: DataTypes.STRING,
-      diastolic: DataTypes.STRING,
-      pulse: DataTypes.STRING,
+      systolic: {
+        type: DataTypes.STRING,
+      },
+      diastolic: {
+        type: DataTypes.STRING,
+      },
+      pulse: {
+        type: DataTypes.STRING,
+      },
     },
     {
       getterMethods: {

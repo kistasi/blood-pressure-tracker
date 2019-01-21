@@ -5,7 +5,7 @@ const models = require('./../models');
 /* Frontpage */
 results.get('/', (request, response) => {
   models.Result.findAll({ order: [['updatedAt', 'DESC']] }).then(results => {
-    response.render('frontpage', { results })
+    response.render('frontpage', { results });
   });
 });
 
