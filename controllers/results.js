@@ -15,7 +15,7 @@ results.get('/new', (request, response) => {
 });
 
 /* Save the result */
-results.post('/save', (request, response) => {
+results.post('/save', async (request, response) => {
   const result = models.Result.build(
     {
       id: uuidV1(),
@@ -25,19 +25,21 @@ results.post('/save', (request, response) => {
     },
   );
 
-  result.save();
+  await result.save();
   response.redirect('/');
 });
 
 /* Delete a result */
-results.get('/delete/:id', (request, response) => {
-  models.Result.destroy(
+results.get('/delete/:id', async (request, response) => {
+  await models.Result.destroy(
     {
       where: {
         id: request.params.id,
       },
     },
-  ).then(response.redirect('/'));
+  );
+
+  response.redirect('/');
 });
 
 module.exports = results;
