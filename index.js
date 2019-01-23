@@ -1,6 +1,5 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const mustacheExpress = require('mustache-express');
 const results = require('./controllers/results');
 
 /* Config */
@@ -14,8 +13,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 /* Template engine */
-app.engine('mst', mustacheExpress());
-app.set('view engine', 'mst');
+app.set('view engine', 'pug');
 app.set('views', [__dirname, '/views'].join(''));
 
 /* Resources */

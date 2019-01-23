@@ -1,0 +1,23 @@
+extend base.pug
+
+block content
+  .container
+    form(action=action, method="POST")
+      .field
+        label(class="label", for="systolic")="Systolic"
+        .control
+          input(type="number", id="systolic", name="systolic",class="input", required)
+
+      .field
+        label(class="label", for="diastolic")="Diastolic"
+        .control
+          input(type="number", id="diastolic", name="diastolic", class="input", required)
+
+      .field
+        label(class="label", for="pulse")="Pulse"
+        .control
+          input(type="number", id="pulse", name="pulse", class="input", required)
+
+      .field.is-grouped
+        .control
+          input.button.is-link(type="submit")

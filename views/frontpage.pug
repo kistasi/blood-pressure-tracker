@@ -1,0 +1,20 @@
+extend base.pug
+
+block content
+  table.table
+    thead
+      tr
+        th="Date"
+        th="Systolic"
+        th="Diastolic"
+        th="Pulse"
+        th="Delete"
+
+    tbody
+      each item in results
+        tr
+          td=item.localizedCreatedAt
+          td=item.systolic
+          td=item.diastolic
+          td=item.pulse
+          td: a(href=`delete/${item.id}`)="Delete"

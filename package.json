@@ -7,8 +7,8 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "moment": "^2.23.0",
-    "mustache-express": "^1.2.8",
     "pg": "^7.8.0",
+    "pug": "^2.0.3",
     "sequelize": "^4.42.0",
     "uuid": "^3.3.2"
   },
